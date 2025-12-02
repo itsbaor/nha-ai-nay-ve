@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nhà Ai Nấy Về - Mobile Responsive</title>
+    <title>Nhà Ai Nấy Về</title>
     <style>
-        /* --- CSS VARIABLES & RESET --- */
+        /* =========================================
+           1. CSS VARIABLES & RESET
+           ========================================= */
         :root {
             --primary-green: #43a047;
             --light-green: #66bb6a;
@@ -16,101 +18,138 @@
             --bg-grey: #e0e0e0;
         }
 
+        @font-face {
+            font-family: 'BD StreetSign Sans';
+            /* Đảm bảo đường dẫn file font đúng */
+            src: url('../asset/fonts/BDStreetSignSans-AlmostRaised.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'BD StreetSign Sans', 'Barlow', sans-serif !important;
         }
 
-        body {
+        body, html {
             background-color: var(--text-white);
             color: var(--text-dark);
+            width: 100%;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        /* --- HEADER (Updated for Mobile Layout) --- */
-        header {
-            background-color: #fff; /* White background as per mobile wireframe */
-            border-bottom: 1px solid #ddd;
-            padding: 15px 20px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between; /* Hamburger left, Logo center */
-            position: relative;
-        }
-
-        /* Hamburger Icon */
-        .menu-toggle {
-            display: none; /* Hidden on Desktop */
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-        }
-
-        .bar {
-            width: 25px;
-            height: 3px;
-            background-color: #000;
-        }
-
-        /* Logo */
-        .logo-text {
-            font-weight: 900;
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            border: 2px solid #000;
-            padding: 5px 15px;
-            color: #000;
-        }
-
-        /* Navigation */
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        nav a {
-            color: var(--dark-green);
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-
-        /* --- HERO & INTRO --- */
-        .hero {
-            text-align: center;
-            padding: 40px 20px;
-            background-color: var(--text-white);
-        }
-
-        .intro-box {
-            background-color: #333; /* Dark grey box as per wireframe */
-            color: white;
-            padding: 40px 20px;
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .hero-mascots {
+        img {
             max-width: 100%;
             height: auto;
             display: block;
-            margin: 0 auto;
         }
 
-        /* --- SHARED SECTION STYLES --- */
-        section {
-            padding: 40px 20px;
+        /* =========================================
+           2. HEADER
+           ========================================= */
+        header {
+            background-color: #51AA17;
+            border-bottom: 1px solid #ddd;
+            padding: 0 20px;
+            height: 99px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center; 
         }
 
+        .header-container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Menu giữa trên Desktop */
+        }
+
+        /* Menu Desktop */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        nav a {
+            color: #FFEC39;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+        }
+
+        /* Nút Hamburger */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            z-index: 1001;
+        }
+
+        .bar {
+            width: 30px;
+            height: 3px;
+            background-color: #000;
+            transition: 0.3s;
+        }
+
+        /* =========================================
+           3. HERO & CAMPAIGN SECTION
+           ========================================= */
+        .hero {
+            text-align: center;
+            padding: 20px 0;
+            background-color: var(--text-white);
+        }
+
+        .hero-container {
+            display: flex;      
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .hero-container img { object-fit: cover; height: auto; }
+        .hero-container img:first-child { width: 40%; }
+        .hero-container img:last-child { width: 60%; }
+
+        /* Campaign Container */
+        .campaign-container {
+            gap: 20px;
+            display: flex;          
+            flex-direction: column; 
+            align-items: center;    
+            text-align: center;     
+            width: 100%;     
+            margin-top: 5%;       
+            padding: 20px;          
+        }
+
+        .campaign-container img {
+            max-width: 100%; height: auto;   
+        }
+        
+        .hero-mascots { width: 20%; }
+        .campaign-container .image-center {
+            margin-top: 2%;
+            margin-bottom: 2%;
+            width: 40%;
+        }
+        .campaign-container img:last-child {
+            width: 20%;
+        }
+
+        /* =========================================
+           4. SHARED & OTHER SECTIONS
+           ========================================= */
+        section { padding: 40px 20px; }
+        
         .section-title {
             text-align: center;
             text-transform: uppercase;
@@ -119,191 +158,297 @@
             font-weight: 900;
         }
 
-        /* --- VIDEO CLIP --- */
-        .video-section {
-            background-color: #dcdcdc; /* Light grey */
-        }
-
-        .video-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .video-placeholder {
-            background-color: #bbbbbb;
-            height: 200px;
+        /* Video Section */
+        .video-section { 
+            background-color: #dcdcdc;
             display: flex;
-            align-items: center;
             justify-content: center;
-            font-weight: bold;
-            color: white;
-        }
-        
-        .video-large {
-            grid-row: span 2;
-            height: 415px;
+            align-items: center;
+            height: 500px; 
         }
 
-        /* --- POSTER SERIES (Grid 2x2 on Mobile) --- */
-        .poster-section {
-            background-color: var(--text-white);
-        }
-
+        /* Poster Section */
+        .poster-section { background-color:#51AA17; }
         .poster-grid {
             display: grid;
-            grid-template-columns: 1fr 1px 1fr; /* Desktop default */
+            grid-template-columns: 1fr 2px 1fr;
             gap: 20px;
             max-width: 900px;
             margin: 0 auto;
         }
+        .vertical-line { background-color: var(--dark-green); width: 100%; height: 100%; }
+        .poster-col { display: flex; flex-direction: column; gap: 60px; }
+        .poster-col-right { margin-top: 80px; }
+        .poster-item { background-color: #e0e0e0; height: 500px; width: 100%; }
 
-        .vertical-line {
-            background-color: var(--dark-green);
-            width: 2px;
-            height: 100%;
-        }
-
-        .poster-col {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .poster-item {
-            background-color: #e0e0e0;
-            height: 200px; /* Smaller for mobile grid look */
-            width: 100%;
-        }
-
-        /* --- GUIDE & INFO --- */
-        .guide-section {
-            background-color: #dcdcdc;
-            text-align: center;
-        }
-        
+        /* Guide Section */
+        .guide-section { background-color: #51AA17; text-align: center; padding: 0 !important; }
         .guide-box {
             background-color: #cccccc;
-            height: 200px;
+            height: 500px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
             margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto; 
+            margin-right: auto;
         }
-
-        /* --- FORM SECTION --- */
-        .form-section {
-            background: radial-gradient(circle, var(--primary-green) 10%, transparent 10%),
-                        var(--primary-green);
-            background-size: 20px 20px;
-            background-color: var(--primary-green);
-            color: var(--text-white);
-            position: relative;
-        }
-        
-        .form-section::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(67, 160, 71, 0.9);
-            z-index: 1;
-        }
-
-        .form-container {
-            position: relative;
-            z-index: 2;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .input-group { margin-bottom: 15px; }
-        .input-group label { display: block; margin-bottom: 5px; font-weight: bold; color: var(--accent-yellow); }
-        .input-group input, .input-group select {
-            width: 100%; padding: 12px; border-radius: 8px; border: none; font-size: 1rem;
-        }
-        
-        .checkbox-group { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; font-weight: bold; }
-        
-        .btn-submit {
-            width: 100%; padding: 15px; background-color: var(--accent-yellow);
-            color: black; font-weight: bold; border: none; border-radius: 8px;
-            text-transform: uppercase; font-size: 1.1rem; cursor: pointer;
-        }
-
-        #emailContainer { display: none; }
-
-        /* --- FOOTER --- */
-        footer {
-            background-color: #dcdcdc; /* Grey as per wireframe */
-            text-align: center;
-            padding: 30px;
+        .guide-box-2 {
+            margin-top: 100px;
+            background-color: #e0e0e0;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: bold;
-            color: #333;
+        }
+
+        /* Layout Images Container */
+        .layout-container {
+            width: 100%;             
+            display: flex;
+            flex-direction: column;  
+            align-items: center;    
+            background-color: #51AA17;
+            padding-bottom: 40px;
+        }
+        .top-section {
+            margin-top: 20px;
+            width: 100%;             
+            display: flex;           
+            justify-content: center;
+        }
+        .top-section img {
+            max-width: 30%;          
+            margin-bottom: 20px;     
+        }
+        .bottom-section {
+            width: 100%;             
+            display: flex;           
+            justify-content: center; 
+            gap: 5%;                 
+        }
+        .bottom-section img {
+            width: 30%;              
+            height: auto;            
+            object-fit: contain;     
         }
 
         /* =========================================
-           MOBILE RESPONSIVE STYLES (Max-width: 768px)
+           5. FORM SECTION (UPDATED - NEW DESIGN)
+           ========================================= */
+        .form-section {
+             background-color:#51AA17;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+            color: var(--text-white);
+        }
+
+        /* Pattern nền mờ */
+        .form-section::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background-color:#51AA17;
+            background-size: 30px 30px;
+            opacity: 0.1;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .form-wrapper {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        /* Cột Trái: Text */
+        .form-text-col {
+            flex: 1;
+            text-align: left;
+        }
+
+        .form-text-col h2 {
+            font-size: 3rem;
+            line-height: 1.1;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-weight: 900;
+        }
+
+        .form-text-col p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Cột Phải: Inputs */
+        .form-input-col {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .custom-input-group {
+            margin-bottom: 20px;
+        }
+
+        .custom-input-group label {
+            display: block;
+            color: var(--accent-yellow); 
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            text-transform: capitalize;
+            text-align: left;
+        }
+
+        /* Input bo tròn */
+        .custom-input-group input, 
+        .custom-input-group select {
+            width: 100%;
+            padding: 15px 25px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            background-color: #fff;
+            outline: none;
+            color: #555;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .btn-submit-custom {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--accent-yellow);
+            color: black;
+            font-weight: 900;
+            border: none;
+            border-radius: 50px;
+            text-transform: uppercase;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+        }
+
+        .btn-submit-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* =========================================
+           6. POPUP NOTIFICATION
+           ========================================= */
+        .popup-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .popup-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            color: #333;
+        }
+
+        .popup-overlay.show .popup-content {
+            transform: scale(1);
+        }
+
+        .popup-icon {
+            width: 80px; height: 80px;
+            background-color: #43a047;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin: 0 auto 20px;
+        }
+
+        .popup-title {
+            font-size: 1.8rem;
+            color: #2e7d32;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .popup-close-btn {
+            background-color: #2e7d32;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .popup-close-btn:hover { background-color: #1b5e20; }
+        
+        footer { background-color: #dcdcdc; text-align: center; padding: 30px; font-weight: bold; color: #333; }
+
+        /* =========================================
+           7. MOBILE RESPONSIVE
            ========================================= */
         @media (max-width: 768px) {
-            /* 1. Header: Hamburger + Logo Center */
-            .menu-toggle { display: flex; }
+            .header-container { justify-content: flex-start; }
+            .menu-toggle { display: flex; } 
             
             nav {
-                display: none; /* Hide menu by default */
+                display: none; 
                 position: absolute;
-                top: 100%;
-                left: 0;
+                top: 99px; left: 0;
                 width: 100%;
                 background-color: white;
-                border-bottom: 1px solid #ddd;
+                border-bottom: 2px solid #43a047;
                 padding: 20px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             }
+            nav.active { display: block; }
+            nav ul { flex-direction: column; text-align: left; gap: 20px; }
+            nav a { color: #2e7d32; display: block; }
 
-            nav.active { display: block; } /* Show when toggled */
-
-            nav ul {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .header-container {
-                justify-content: space-between;
-            }
+            .video-grid { grid-template-columns: 1fr; }
+            .poster-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .vertical-line { display: none; }
+            .poster-col { display: contents; }
             
-            .logo-text {
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
-            /* 2. Video Grid: Stack vertically on mobile */
-            .video-grid {
-                grid-template-columns: 1fr; 
-            }
-            .video-large { grid-row: auto; height: 250px; }
-
-            /* 3. Poster Series: 2x2 Grid (Wireframe Style) */
-            .poster-grid {
-                grid-template-columns: 1fr 1fr; /* Force 2 columns */
-                gap: 10px;
-            }
-            
-            .vertical-line { display: none; } /* Remove the line */
-            
-            .poster-col {
-                display: contents; /* Allows children to sit directly in grid */
-            }
-            
-            /* Remove text descriptions in grid view to look like boxes if needed, 
-               or keep them small. Wireframe shows just boxes. */
-            .poster-item { height: 150px; } 
-
-            /* 4. Form Section */
-            .form-cta h2 { font-size: 1.8rem; text-align: center; }
-            .form-cta p { text-align: center; margin-bottom: 20px; }
+            /* Form Mobile */
+            .form-wrapper { flex-direction: column; text-align: center; }
+            .form-text-col { text-align: center; margin-bottom: 20px; }
+            .form-text-col h2 { font-size: 2rem; }
+            .custom-input-group label { text-align: left; /* Giữ label căn trái cho dễ nhìn */ }
         }
     </style>
 </head>
@@ -312,53 +457,48 @@
     <header>
         <div class="header-container">
             <div class="menu-toggle" id="mobile-menu">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
-
-            <div class="logo-text">LOGO</div>
-
-            <div style="width: 25px;"></div>
+            <nav id="nav-list">
+                <ul>
+                    <li><a href="#about">Về "Nhà Ai Nấy Về"</a></li>
+                    <li><a href="#guide">Hướng dẫn phân loại</a></li>
+                    <li><a href="#event">Sự kiện "Đưa rác - rước quà"</a></li>
+                </ul>
+            </nav>
         </div>
-
-        <nav id="nav-list">
-            <ul>
-                <li><a href="#about">Giới thiệu</a></li>
-                <li><a href="#guide">Hướng dẫn</a></li>
-                <li><a href="#event">Sự kiện</a></li>
-            </ul>
-        </nav>
     </header>
 
     <section class="hero" id="about">
-        <h3 style="margin-bottom:10px;">3 MASCOT</h3>
-        <img src="https://placehold.co/300x150/orange/white?text=Mascots" alt="Mascots" class="hero-mascots">
-        
-        <div class="intro-box">
-            <h3>LỜI GIỚI THIỆU</h3>
-            <p>Chiến dịch "Nhà Ai Nấy Về" - Phân loại rác tại nguồn.</p>
+       <div class="hero-container">
+            <img src="../asset/images/banner.png" alt="Banner Left">
+            <img src="../asset/images/right_member.png" alt="Banner Right">
+        </div>
+
+        <div class="campaign-container">
+            <img src="../asset/images/3_member.png" alt="Mascots" class="hero-mascots">
+            <h2 style="font-size: 50px;">Lời mở đầu</h2>
+            <p>Chiến dịch “Nhà Ai Nấy Về" được ra đời từ nhu cầu cấp thiết của việc phân loại rác — Với mục tiêu nâng cao <br> nhận thức và hình thành thói quen phân loại rác ở người trẻ Việt Nam.</p>
+            <img src="../asset/images/image_rac.jpg" alt="Text" class="image-center"/>
+            <img src="../asset/images/3_bottom.png" alt="Text"/>
         </div>
     </section>
 
     <section class="video-section">
         <h2 class="section-title">VIDEO CLIP</h2>
-        <div class="video-grid">
-            <div class="video-placeholder">Video 1</div>
-            <div class="video-placeholder video-large">Video Main</div>
-            <div class="video-placeholder">Video 2</div>
-        </div>
     </section>
 
     <section class="poster-section">
-        <h2 class="section-title">POSTER SERIES</h2>
+        <h2 class="section-title">POSTER SERIES: HÀNH TRÌNH VỀ NHÀ, ĐÍCH ĐẾN CỦA RÁC</h2>
         <div class="poster-grid">
             <div class="poster-col">
                 <div class="poster-item"></div>
                 <div class="poster-item"></div>
             </div>
-            
-            <div class="vertical-line"></div> <div class="poster-col">
+            <div class="vertical-line"></div> 
+            <div class="poster-col poster-col-right">
                 <div class="poster-item"></div>
                 <div class="poster-item"></div>
             </div>
@@ -367,79 +507,132 @@
 
     <section class="guide-section" id="guide">
         <div class="guide-box">HƯỚNG DẪN PHÂN LOẠI</div>
-        <div class="guide-box" style="background-color:#e0e0e0;">
-            THÔNG TIN EVENT<br>
-            (Cách tham gia, lịch, địa điểm...)
+        <div class="guide-box-2">
+            THÔNG TIN EVENT <br> ( CÁCH THAM GIA, LỊCH, ĐỊA ĐIỂM, QUÀ TẶNG,...)
         </div>
     </section>
+
+    <div class="layout-container">
+        <div class="top-section">
+            <img src="../asset/images/image1.png" alt="image top">
+        </div>
+        <div class="bottom-section">
+            <img src="../asset/images/image 2.png" alt="image left">
+            <img src="../asset/images/image3.png" alt="image right">
+        </div>
+    </div>
 
     <section class="form-section" id="event">
-        <div class="form-container">
-            <div class="form-cta">
-                <h2>Bạn đang ở khu nào?</h2>
-                <p>Tụi mình sẽ mang sự kiện tới gần bạn nhất!</p>
-            </div>
-            
+    <div class="form-wrapper">
+        <div class="form-text-col">
+            <h2>Bạn muốn sự kiện<br>đến gần nhà mình hơn?</h2>
+            <p>Điền thông tin sau để nhận thông báo mới nhất từ chiến dịch!</p>
+        </div>
+
+        <div class="form-input-col">
             <form id="registrationForm">
-                <div class="input-group">
-                    <label>Họ & Tên</label>
-                    <input type="text" placeholder="Nhập họ tên..." required>
+                <div class="custom-input-group">
+                    <label>Họ và Tên</label>
+                    <input type="text" placeholder="Nhập Họ và Tên..." required>
                 </div>
-                <div class="input-group">
-                    <label>Khu vực</label>
+                
+                <div class="custom-input-group">
+                    <label>Năm sinh</label>
+                    <input type="text" placeholder="Nhập năm sinh..." required>
+                </div>
+
+                <div class="custom-input-group">
+                    <label>Khu vực bạn sống</label>
                     <select required>
-                        <option value="">Chọn khu vực...</option>
+                        <option value="" disabled selected>Chọn từ danh sách...</option>
                         <option value="q1">Quận 1</option>
-                        <option value="q2">Quận 2 / Thảo Điền</option>
-                        <option value="td">TP Thủ Đức</option>
+                        <option value="q2_thaodien">Quận 2 / TP Thủ Đức (Thảo Điền)</option>
+                        <option value="td_other">TP Thủ Đức (khu khác)</option>
                         <option value="q3">Quận 3</option>
+                        <option value="q4">Quận 4</option>
+                        <option value="q5">Quận 5</option>
                         <option value="q7">Quận 7</option>
-                        <option value="bt">Bình Thạnh</option>
-                        <option value="other">Khác</option>
+                        <option value="binhthanh">Bình Thạnh</option>
+                        <option value="phunhuan">Phú Nhuận</option>
+                        <option value="tanbinh">Tân Bình</option>
+                        <option value="other_hcm">Quận khác tại TP.HCM</option>
+                        <option value="other_city">Ngoài TP.HCM</option>
                     </select>
                 </div>
-                <label class="checkbox-group">
-                    <input type="checkbox" id="notifyCheckbox">
-                    Nhận thông báo sự kiện gần nhà
-                </label>
-                <div class="input-group" id="emailContainer">
+
+                <div class="custom-input-group">
                     <label>Email</label>
-                    <input type="email" id="emailInput" placeholder="Nhập email...">
+                    <input type="email" placeholder="Nhập email..." required>
                 </div>
-                <button type="submit" class="btn-submit">Gửi</button>
+
+                <button type="submit" class="btn-submit-custom">Gửi</button>
             </form>
         </div>
-    </section>
+    </div>
+</section>
 
     <footer>
-        FOOTER<br>
-        (LOGO, ĐƠN VỊ ĐỒNG HÀNH)
+        <p>NHÀ AI NẤY VỀ © 2024</p>
+        <p>Đơn vị đồng hành: Green City</p>
     </footer>
 
+    <div class="popup-overlay" id="successPopup">
+        <div class="popup-content">
+            <div class="popup-icon">✓</div>
+            <div class="popup-title">Thành công!</div>
+            <p class="popup-message" style="margin-bottom: 25px;">Cảm ơn bạn đã đăng ký. Chúng tôi sẽ sớm liên hệ và mang sự kiện đến gần bạn nhất!</p>
+            <button class="popup-close-btn" id="closePopupBtn">Đóng</button>
+        </div>
+    </div>
+
     <script>
-        // Toggle Hamburger Menu
+        // 1. Mobile Menu Logic
         const menuToggle = document.getElementById('mobile-menu');
         const navList = document.getElementById('nav-list');
+        const navLinks = document.querySelectorAll('nav a');
 
-        menuToggle.addEventListener('click', () => {
-            navList.classList.toggle('active');
+        if(menuToggle){
+            menuToggle.addEventListener('click', () => {
+                navList.classList.toggle('active');
+            });
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('active');
+            });
         });
 
-        // Form Logic
-        const checkbox = document.getElementById('notifyCheckbox');
-        const emailContainer = document.getElementById('emailContainer');
+        // 2. Popup & Form Logic
         const form = document.getElementById('registrationForm');
+        const popup = document.getElementById('successPopup');
+        const closePopupBtn = document.getElementById('closePopupBtn');
 
-        checkbox.addEventListener('change', function() {
-            emailContainer.style.display = this.checked ? 'block' : 'none';
-        });
+        // Khi Submit
+        if(form){
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); // Ngăn reload trang
+                popup.classList.add('show'); // Hiện popup
+                form.reset(); // Xóa trắng form
+            });
+        }
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert("Cảm ơn bạn! Bạn vừa gieo thêm một dấu xanh cho thành phố\ntụi mình sẽ xem khu nào nhiều “hàng xóm xanh” nhất để tổ chức tiếp nha.");
-            form.reset();
-            emailContainer.style.display = 'none';
-        });
+        // Khi đóng Popup
+        if(closePopupBtn) {
+            closePopupBtn.addEventListener('click', function() {
+                popup.classList.remove('show');
+            });
+        }
+
+        // Click ra ngoài để đóng
+        if(popup) {
+            popup.addEventListener('click', function(e) {
+                if (e.target === popup) {
+                    popup.classList.remove('show');
+                }
+            });
+        }
     </script>
+
 </body>
 </html>
