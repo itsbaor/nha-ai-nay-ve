@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhà Ai Nấy Về - Mobile Responsive</title>
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-green: #43a047;
+            --light-green: #66bb6a;
+            --dark-green: #2e7d32;
+            --accent-yellow: #fdd835;
+            --text-white: #ffffff;
+            --text-dark: #333333;
+            --bg-grey: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--text-white);
+            color: var(--text-dark);
+        }
+
+        /* --- HEADER (Updated for Mobile Layout) --- */
+        header {
+            background-color: #fff; /* White background as per mobile wireframe */
+            border-bottom: 1px solid #ddd;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Hamburger left, Logo center */
+            position: relative;
+        }
+
+        /* Hamburger Icon */
+        .menu-toggle {
+            display: none; /* Hidden on Desktop */
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: #000;
+        }
+
+        /* Logo */
+        .logo-text {
+            font-weight: 900;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            border: 2px solid #000;
+            padding: 5px 15px;
+            color: #000;
+        }
+
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--dark-green);
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        /* --- HERO & INTRO --- */
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: var(--text-white);
+        }
+
+        .intro-box {
+            background-color: #333; /* Dark grey box as per wireframe */
+            color: white;
+            padding: 40px 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .hero-mascots {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* --- SHARED SECTION STYLES --- */
+        section {
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 900;
+        }
+
+        /* --- VIDEO CLIP --- */
+        .video-section {
+            background-color: #dcdcdc; /* Light grey */
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .video-placeholder {
+            background-color: #bbbbbb;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .video-large {
+            grid-row: span 2;
+            height: 415px;
+        }
+
+        /* --- POSTER SERIES (Grid 2x2 on Mobile) --- */
+        .poster-section {
+            background-color: var(--text-white);
+        }
+
+        .poster-grid {
+            display: grid;
+            grid-template-columns: 1fr 1px 1fr; /* Desktop default */
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .vertical-line {
+            background-color: var(--dark-green);
+            width: 2px;
+            height: 100%;
+        }
+
+        .poster-col {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .poster-item {
+            background-color: #e0e0e0;
+            height: 200px; /* Smaller for mobile grid look */
+            width: 100%;
+        }
+
+        /* --- GUIDE & INFO --- */
+        .guide-section {
+            background-color: #dcdcdc;
+            text-align: center;
+        }
+        
+        .guide-box {
+            background-color: #cccccc;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* --- FORM SECTION --- */
+        .form-section {
+            background: radial-gradient(circle, var(--primary-green) 10%, transparent 10%),
+                        var(--primary-green);
+            background-size: 20px 20px;
+            background-color: var(--primary-green);
+            color: var(--text-white);
+            position: relative;
+        }
+        
+        .form-section::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(67, 160, 71, 0.9);
+            z-index: 1;
+        }
+
+        .form-container {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; margin-bottom: 5px; font-weight: bold; color: var(--accent-yellow); }
+        .input-group input, .input-group select {
+            width: 100%; padding: 12px; border-radius: 8px; border: none; font-size: 1rem;
+        }
+        
+        .checkbox-group { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; font-weight: bold; }
+        
+        .btn-submit {
+            width: 100%; padding: 15px; background-color: var(--accent-yellow);
+            color: black; font-weight: bold; border: none; border-radius: 8px;
+            text-transform: uppercase; font-size: 1.1rem; cursor: pointer;
+        }
+
+        #emailContainer { display: none; }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #dcdcdc; /* Grey as per wireframe */
+            text-align: center;
+            padding: 30px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* =========================================
+           MOBILE RESPONSIVE STYLES (Max-width: 768px)
+           ========================================= */
+        @media (max-width: 768px) {
+            /* 1. Header: Hamburger + Logo Center */
+            .menu-toggle { display: flex; }
+            
+            nav {
+                display: none; /* Hide menu by default */
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                border-bottom: 1px solid #ddd;
+                padding: 20px;
+            }
+
+            nav.active { display: block; } /* Show when toggled */
+
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-container {
+                justify-content: space-between;
+            }
+            
+            .logo-text {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            /* 2. Video Grid: Stack vertically on mobile */
+            .video-grid {
+                grid-template-columns: 1fr; 
+            }
+            .video-large { grid-row: auto; height: 250px; }
+
+            /* 3. Poster Series: 2x2 Grid (Wireframe Style) */
+            .poster-grid {
+                grid-template-columns: 1fr 1fr; /* Force 2 columns */
+                gap: 10px;
+            }
+            
+            .vertical-line { display: none; } /* Remove the line */
+            
+            .poster-col {
+                display: contents; /* Allows children to sit directly in grid */
+            }
+            
+            /* Remove text descriptions in grid view to look like boxes if needed, 
+               or keep them small. Wireframe shows just boxes. */
+            .poster-item { height: 150px; } 
+
+            /* 4. Form Section */
+            .form-cta h2 { font-size: 1.8rem; text-align: center; }
+            .form-cta p { text-align: center; margin-bottom: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="menu-toggle" id="mobile-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+
+            <div class="logo-text">LOGO</div>
+
+            <div style="width: 25px;"></div>
+        </div>
+
+        <nav id="nav-list">
+            <ul>
+                <li><a href="#about">Giới thiệu</a></li>
+                <li><a href="#guide">Hướng dẫn</a></li>
+                <li><a href="#event">Sự kiện</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="about">
+        <h3 style="margin-bottom:10px;">3 MASCOT</h3>
+        <img src="https://placehold.co/300x150/orange/white?text=Mascots" alt="Mascots" class="hero-mascots">
+        
+        <div class="intro-box">
+            <h3>LỜI GIỚI THIỆU</h3>
+            <p>Chiến dịch "Nhà Ai Nấy Về" - Phân loại rác tại nguồn.</p>
+        </div>
+    </section>
+
+    <section class="video-section">
+        <h2 class="section-title">VIDEO CLIP</h2>
+        <div class="video-grid">
+            <div class="video-placeholder">Video 1</div>
+            <div class="video-placeholder video-large">Video Main</div>
+            <div class="video-placeholder">Video 2</div>
+        </div>
+    </section>
+
+    <section class="poster-section">
+        <h2 class="section-title">POSTER SERIES</h2>
+        <div class="poster-grid">
+            <div class="poster-col">
+                <div class="poster-item"></div>
+                <div class="poster-item"></div>
+            </div>
+            
+            <div class="vertical-line"></div> <div class="poster-col">
+                <div class="poster-item"></div>
+                <div class="poster-item"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="guide-section" id="guide">
+        <div class="guide-box">HƯỚNG DẪN PHÂN LOẠI</div>
+        <div class="guide-box" style="background-color:#e0e0e0;">
+            THÔNG TIN EVENT<br>
+            (Cách tham gia, lịch, địa điểm...)
+        </div>
+    </section>
+
+    <section class="form-section" id="event">
+        <div class="form-container">
+            <div class="form-cta">
+                <h2>Bạn đang ở khu nào?</h2>
+                <p>Tụi mình sẽ mang sự kiện tới gần bạn nhất!</p>
+            </div>
+            
+            <form id="registrationForm">
+                <div class="input-group">
+                    <label>Họ & Tên</label>
+                    <input type="text" placeholder="Nhập họ tên..." required>
+                </div>
+                <div class="input-group">
+                    <label>Khu vực</label>
+                    <select required>
+                        <option value="">Chọn khu vực...</option>
+                        <option value="q1">Quận 1</option>
+                        <option value="q2">Quận 2 / Thảo Điền</option>
+                        <option value="td">TP Thủ Đức</option>
+                        <option value="q3">Quận 3</option>
+                        <option value="q7">Quận 7</option>
+                        <option value="bt">Bình Thạnh</option>
+                        <option value="other">Khác</option>
+                    </select>
+                </div>
+                <label class="checkbox-group">
+                    <input type="checkbox" id="notifyCheckbox">
+                    Nhận thông báo sự kiện gần nhà
+                </label>
+                <div class="input-group" id="emailContainer">
+                    <label>Email</label>
+                    <input type="email" id="emailInput" placeholder="Nhập email...">
+                </div>
+                <button type="submit" class="btn-submit">Gửi</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        FOOTER<br>
+        (LOGO, ĐƠN VỊ ĐỒNG HÀNH)
+    </footer>
+
+    <script>
+        // Toggle Hamburger Menu
+        const menuToggle = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+
+        // Form Logic
+        const checkbox = document.getElementById('notifyCheckbox');
+        const emailContainer = document.getElementById('emailContainer');
+        const form = document.getElementById('registrationForm');
+
+        checkbox.addEventListener('change', function() {
+            emailContainer.style.display = this.checked ? 'block' : 'none';
+        });
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert("Cảm ơn bạn! Bạn vừa gieo thêm một dấu xanh cho thành phố\ntụi mình sẽ xem khu nào nhiều “hàng xóm xanh” nhất để tổ chức tiếp nha.");
+            form.reset();
+            emailContainer.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
