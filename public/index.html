@@ -23,7 +23,20 @@
         @font-face {
             font-family: 'BD StreetSign Sans';
             /* Đảm bảo đường dẫn file font đúng */
-            src: url('../asset/fonts/BDStreetSignSans-AlmostRaised.otf') format('opentype');
+            src: url('./asset/fonts/BDStreetSignSans-Standard.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'SFUFuturaHeavy';
+            src: url('./asset/fonts/SFUFuturaHeavy.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+         @font-face {
+            font-family: 'SFUFutura';
+            src: url('./asset/fonts/SFUFuturaBook.TTF') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
@@ -245,6 +258,7 @@
         .hero-container {
             display: flex;      
             width: 100%;
+            justify-content: space-between;
             margin-bottom: 20px;
         }
 
@@ -260,7 +274,8 @@
         }
 
         .hero-container img:first-child {
-            width: 40%;
+            width: 30%;
+            height: 30%;
             animation: slideInLeft 1s ease-out;
         }
 
@@ -282,7 +297,9 @@
         }
 
         .campaign-container img {
-            max-width: 100%; height: auto;   
+            max-width: 100%; 
+            height: 80px;
+            width: auto; 
         }
         
         .hero-mascots {
@@ -292,8 +309,9 @@
 
         .campaign-container .image-center {
             margin-top: 2%;
-            margin-bottom: 2%;
-            width: 40%;
+            margin-bottom: 4%;
+            width: 12%;
+            height: auto;
             transition: transform 0.3s ease;
         }
 
@@ -302,7 +320,8 @@
         }
 
         .campaign-container img:last-child {
-            width: 20%;
+            width: 10%;
+            height: auto;
             animation: float 3.5s ease-in-out infinite;
         }
 
@@ -312,6 +331,10 @@
 
         .campaign-container p {
             animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        .campaign-description {
+            font-family: 'SFUFuturaHeavy', sans-serif !important;
         }
 
         /* =========================================
@@ -325,6 +348,7 @@
             font-size: 1.5rem;
             margin-bottom: 30px;
             font-weight: 900;
+            font-family: 'SFUFuturaHeavy', sans-serif !important;
             opacity: 0;
             animation: fadeInUp 0.8s ease-out forwards;
         }
@@ -340,6 +364,26 @@
 
         /* Poster Section */
         .poster-section { background-color:#51AA17; }
+
+        .poster-intro {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+            padding: 20px;
+        }
+
+        .poster-intro img {
+                max-width: 80%;
+                height: auto;
+                margin-bottom: 6%;
+        }
+
+        .poster-intro h2 {
+            color: white;
+            font-size: 1.0rem;
+        }
         .poster-grid {
             display: grid;
             grid-template-columns: 1fr 2px 1fr;
@@ -349,16 +393,22 @@
         }
         .vertical-line { background-color: var(--dark-green); width: 100%; height: 100%; }
         .poster-col { display: flex; flex-direction: column; gap: 60px; }
-        .poster-col-right { margin-top: 80px; }
         .poster-item {
             background-color: #e0e0e0;
-            height: 500px;
+            height: auto;
             width: 100%;
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
             cursor: pointer;
             border-radius: 10px;
+        }
+
+        .poster-item img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
         }
 
         .poster-item::before {
@@ -387,8 +437,8 @@
         /* Guide Section */
         .guide-section { background-color: #51AA17; text-align: center; padding: 0 !important; }
         .guide-box {
-            background-color: #cccccc;
-            height: 500px;
+            background-color: transparent;
+            height: auto;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -399,6 +449,14 @@
             margin-right: auto;
             transition: all 0.3s ease;
             border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .guide-box img {
+            width: 74%;
+            height: auto;
+            margin-top: 139px;
+            display: block;
         }
 
         .guide-box:hover {
@@ -408,19 +466,38 @@
 
         .guide-box-2 {
             margin-top: 100px;
-            background-color: #e0e0e0;
-            height: 500px;
+            background-color: transparent;
+            height: auto;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
             transition: all 0.3s ease;
             border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .guide-box-2 img {
+            width: 42%;
+            height: auto;
+            display: block;
         }
 
         .guide-box-2:hover {
             transform: scale(1.03);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Event Title Styling */
+        .guide-section + h2 {
+                color: white;
+                background-color: #51AA17;
+                text-align: center;
+                padding: 40px 20px;
+                padding: 73px;
+                font-size: 1.6rem;
+                font-weight: 900;
+                text-transform: uppercase;
         }
 
         /* Layout Images Container */
@@ -451,7 +528,7 @@
         }
 
         .bottom-section {
-            width: 100%;
+            width: 125%;
             display: flex;
             justify-content: center;
             gap: 5%;
@@ -467,7 +544,7 @@
 
         .bottom-section img:hover {
             transform: scale(1.08) translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
         }
 
         /* =========================================
@@ -495,14 +572,18 @@
         }
 
         .form-wrapper {
-            position: relative;
-            z-index: 2;
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 40px;
+                position: relative;
+                z-index: 2;
+                max-width: 100%;
+                margin: 0 auto;
+                margin-left: 5%;
+                padding-right: 5%;
+                display: flex;
+                justify-content: space-between;
+        }
+
+        .form-wrapper * {
+            font-family: 'SFUFuturaHeavy', sans-serif !important;
         }
 
         /* Cột Trái: Text */
@@ -511,17 +592,16 @@
             text-align: left;
         }
 
-        .form-text-col h2 {
+        .form-text-col h1 {
             font-size: 3rem;
+            font-family: 'SFUFuturaHeavy', sans-serif !important;
             line-height: 1.1;
-            text-transform: uppercase;
             margin-bottom: 15px;
-            font-weight: 900;
         }
 
         .form-text-col p {
-            font-size: 1.1rem;
-            opacity: 0.9;
+            font-size: 0.8rem;
+            font-family: 'SFUFuturaHeavy', sans-serif !important;
         }
 
         /* Cột Phải: Inputs */
@@ -694,7 +774,7 @@
    FOOTER STYLES (SIMPLE VERSION)
    ========================================= */
 footer {
-    background-color: #388E3C; /* Nền xanh đậm */
+    background-color: #0F8000; /* Nền xanh đậm */
     padding: 50px 20px 30px;
     color: white;
     text-align: center;
@@ -719,9 +799,9 @@ footer {
 }
 
 .footer-title-white {
-    color: white;
+    color: #FFEC39;
     text-transform: uppercase;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     font-weight: 900;
     margin-bottom: 20px;
     letter-spacing: 1px;
@@ -729,7 +809,7 @@ footer {
 
 /* --- Ảnh Logo Tài trợ --- */
 .sponsor-section img {
-    max-width: 100%;
+    max-width: 68%;
     height: auto;
     display: block;
     margin: 0 auto; /* Căn giữa ảnh */
@@ -746,9 +826,10 @@ footer {
 
 .contact-item {
     display: flex;
-    align-items: center;     /* Căn giữa icon và chữ theo chiều dọc */
-    justify-content: center; /* Căn giữa ra giữa màn hình */
-    gap: 10px;               /* Khoảng cách giữa icon và chữ */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     font-size: 1.1rem;
 }
 
@@ -826,11 +907,35 @@ footer {
                 padding-left: 20px;
             }
 
+            /* Hero Container Mobile */
+            .hero-container {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+
+            .hero-container img:first-child,
+            .hero-container img:last-child {
+                width: 80%;
+            }
+
             .video-grid { grid-template-columns: 1fr; }
             .poster-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
             .vertical-line { display: none; }
             .poster-col { display: contents; }
-            
+
+            /* Bottom Section Mobile */
+            .bottom-section {
+                flex-direction: column;
+                width: 100%;
+                gap: 20px;
+            }
+
+            .bottom-section img {
+                width: 80%;
+                margin: 0 auto !important;
+            }
+
             /* Form Mobile */
             .form-wrapper { flex-direction: column; text-align: center; }
             .form-text-col { text-align: center; margin-bottom: 20px; }
@@ -851,9 +956,9 @@ footer {
             </div>
             <nav id="nav-list">
                 <ul>
-                    <li><a href="#about">Về "Nhà Ai Nấy Về"</a></li>
-                    <li><a href="#guide">Hướng dẫn phân loại</a></li>
-                    <li><a href="#event">Sự kiện "Đưa rác - rước quà"</a></li>
+                    <li><a href="#about" style="text-transform: math-auto;;">Về "Nhà Ai Nấy Về"</a></li>
+                    <li><a href="#guide" style="text-transform: math-auto;;">Hướng dẫn phân loại</a></li>
+                    <li><a href="#event" style="text-transform: math-auto;;">Sự kiện "Đưa rác - rước quà"</a></li>
                 </ul>
             </nav>
         </div>
@@ -861,16 +966,16 @@ footer {
 
     <section class="hero" id="about">
        <div class="hero-container">
-            <img src="../asset/images/banner.png" alt="Banner Left">
-            <img src="../asset/images/right_member.png" alt="Banner Right">
+            <img src="./asset/images/banner.png" alt="Banner Left">
+            <img src="./asset/images/right_member.png" alt="Banner Right">
         </div>
 
         <div class="campaign-container">
-            <img src="../asset/images/3_member.png" alt="Mascots" class="hero-mascots">
-            <h2 style="font-size: 50px;">Lời mở đầu</h2>
-            <p>Chiến dịch “Nhà Ai Nấy Về" được ra đời từ nhu cầu cấp thiết của việc phân loại rác — Với mục tiêu nâng cao <br> nhận thức và hình thành thói quen phân loại rác ở người trẻ Việt Nam.</p>
-            <img src="../asset/images/image_rac.jpg" alt="Text" class="image-center"/>
-            <img src="../asset/images/3_bottom.png" alt="Text"/>
+            <img src="./asset/images/3_member.png" alt="Mascots" class="hero-mascots">
+            <h2 style="font-size: 23px;">Lời mở đầu</h2>
+            <p class="campaign-description" style="font-size: 10px;" >Chiến dịch "Nhà Ai Nấy Về" được ra đời từ nhu cầu cấp thiết của việc phân loại rác — Với mục tiêu nâng cao nhận thức và hình thành thói quen phân <br> loại rác ở người trẻ Việt Nam.</p>
+            <img src="./asset/images/image_rac.jpg" alt="Text" class="image-center"/>
+            <img src="./asset/images/3_bottom.png" alt="Text"/>
         </div>
     </section>
 
@@ -879,41 +984,56 @@ footer {
     </section>
 
     <section class="poster-section">
-        <h2 class="section-title" data-aos="fade-up">POSTER SERIES: HÀNH TRÌNH VỀ NHÀ, ĐÍCH ĐẾN CỦA RÁC</h2>
+
+         <div class="poster-intro">
+            <img src="./asset/images/rac2.png" alt="Poster 1">
+         <h2 class="section-title" data-aos="fade-up">Cùng nhau khám phá hành trình của ba loại rác khi được <br> trả về "đúng ngôi nhà" của mình.</h2>
+         </div>
         <div class="poster-grid">
             <div class="poster-col">
-                <div class="poster-item" data-aos="fade-right" data-aos-delay="100"></div>
-                <div class="poster-item" data-aos="fade-right" data-aos-delay="300"></div>
+                <div class="poster-item" data-aos="fade-right" data-aos-delay="100">
+                    <img src="./asset/images/poster-1.png" alt="Poster 1">
+                </div>
+                <div class="poster-item" data-aos="fade-right" data-aos-delay="300">
+                    <img src="./asset/images/poster-3.png" alt="Poster 3">
+                </div>
             </div>
             <div class="vertical-line"></div>
             <div class="poster-col poster-col-right">
-                <div class="poster-item" data-aos="fade-left" data-aos-delay="200"></div>
-                <div class="poster-item" data-aos="fade-left" data-aos-delay="400"></div>
+                <div class="poster-item" data-aos="fade-left" data-aos-delay="200">
+                    <img src="./asset/images/poster-2.png" alt="Poster 2">
+                </div>
+                <div class="poster-item" data-aos="fade-left" data-aos-delay="400">
+                    <img src="./asset/images/poster-4.png" alt="Poster 4">
+                </div>
             </div>
         </div>
     </section>
 
     <section class="guide-section" id="guide">
-        <div class="guide-box" data-aos="zoom-in">HƯỚNG DẪN PHÂN LOẠI</div>
+        <div class="guide-box" data-aos="zoom-in">
+            <img src="./asset/images/image-phan-loai.png" alt="Hướng dẫn phân loại rác">
+        </div>
         <div class="guide-box-2" data-aos="zoom-in" data-aos-delay="200">
-            THÔNG TIN EVENT <br> ( CÁCH THAM GIA, LỊCH, ĐỊA ĐIỂM, QUÀ TẶNG,...)
+            <img src="./asset/images/baba.png" alt="3 Không Phân Loại">
         </div>
     </section>
 
+    <h2>
+         SỰ KIỆN *ĐƯA RÁC - RƯỚC QUÀ*
+    </h2>
+       
     <div class="layout-container">
-        <div class="top-section">
-            <img src="../asset/images/image1.png" alt="image top" data-aos="fade-down">
-        </div>
         <div class="bottom-section">
-            <img src="../asset/images/image 2.png" alt="image left" data-aos="fade-up" data-aos-delay="100">
-            <img src="../asset/images/image3.png" alt="image right" data-aos="fade-up" data-aos-delay="200">
+            <img src="./asset/images/image 2.png" alt="image left" data-aos="fade-up" data-aos-delay="100" style="margin-bottom: 15%;">
+            <img src="./asset/images/image3.png" alt="image right" data-aos="fade-up" data-aos-delay="200" style="margin-top: 11%;">
         </div>
     </div>
 
     <section class="form-section" id="event">
     <div class="form-wrapper">
         <div class="form-text-col" data-aos="fade-right">
-            <h2>Bạn muốn sự kiện<br>đến gần nhà mình hơn?</h2>
+            <h1>Bạn muốn sự kiện<br>đến gần nhà mình hơn?</h1>
             <p>Điền thông tin sau để nhận thông báo mới nhất từ chiến dịch!</p>
         </div>
 
@@ -966,7 +1086,7 @@ footer {
         <div class="sponsor-section" data-aos="fade-up">
             <h3 class="footer-title-yellow">Đơn vị đồng hành và tài trợ</h3>
             <!-- Ảnh chứa toàn bộ logo các nhà tài trợ -->
-            <img src="../asset/images/image-footer.png" alt="Sponsor Logos"/>
+            <img src="./asset/images/image-footer.png" alt="Sponsor Logos"/>
         </div>
 
         <!-- Phần Thông tin liên hệ -->
@@ -974,18 +1094,18 @@ footer {
             <h3 class="footer-title-white">Thông tin liên hệ</h3>
 
             <div class="contact-item">
-                <img src="../asset/images/mail.png" alt="Email Icon"/>
-                <span>Nhaainayve@gmail.com</span>
+                <img src="./asset/images/mail.png" alt="Email Icon"/>
+                <span style="font-family:'SFUFutura', sans-serif !important; ;">Nhaainayve@gmail.com</span>
             </div>
 
             <div class="contact-item">
-                  <img src="../asset/images/web.png" alt="Web Icon"/>
-                <span>nha-ai-nay-ve.web.app</span>
+                  <img src="./asset/images/web.png" alt="Web Icon"/>
+                <span style="font-family:'SFUFutura', sans-serif !important; ;">nha-ai-nay-ve.web.app</span>
             </div>
         </div>
 
         <!-- Phần Copyright -->
-        <div class="copyright-text">
+        <div class="copyright-text" style="font-family:'SFUFutura', sans-serif !important; ;" >
             Copyright © 2025 NHAAINAYVE
         </div>
 
